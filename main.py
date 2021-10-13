@@ -17,12 +17,21 @@ class Contact:
     # Set New Name Method
     def setName(self, newName):
         self.name = newName
+    
+    # Set New Number Method
+    def setNumber(self, newNumber):
+        self.number = newNumber
+
+    # Set New Email
+    def setEmail(self, newEmail):
+        self.email = newEmail
 
 # Create Initial Contacts
 contactList.append(Contact("Colin", "780-123-4567", "colinveldkamp6@gmail.com"))
 contactList.append(Contact("Advi", "780-163-9527", "adviislam34@gmail.com"))
 contactList.append(Contact("Robert", "780-191-6799", "roberto9@gmail.com"))
-contactList.append(Contact("Kim", "780-232-2145", "kimberlyy04@gmail.com"))
+contactList.append(Contact("Kim", "780-232-2145", "kimberlyy04@yahoo.com"))
+contactList.append(Contact("Riyana", "780-857-1093", "ririyana7@gmail.com"))
 
 # Clear Console Function
 import os
@@ -61,7 +70,7 @@ def main():
     
 # Get Menu Selection
 def getMenuSelection(): 
-    
+
     print("\nMAIN MENU")
     print("1: Display Contacts")
     print("2: Add new contact")
@@ -99,12 +108,13 @@ def deleteContact():
     displayList()
     contactNumber = int(input("Which contact # do you wish to delete? "))
     contactList.pop(contactNumber - 1)
+    print("Done")
     # End deleteContact()
 
 # Search for Contact
 def searchContact():
     pass
-    # End searchContact()
+    # End searchContact()5
 
 # Show Contact Information
 def showContact():
@@ -113,7 +123,7 @@ def showContact():
     displayList()
     # Get User Input 
     inp = int(input("Which contact do you wish to see? "))
-    if inp < len(contactList) and inp > 0:
+    if inp <= len(contactList) and inp > 0:
         print(contactList[inp - 1])
     # End showContact()
 
