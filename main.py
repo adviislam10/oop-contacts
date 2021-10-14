@@ -22,7 +22,7 @@ class Contact:
     def setNumber(self, newNumber):
         self.number = newNumber
 
-    # Set New Email
+    # Set New Email Method
     def setEmail(self, newEmail):
         self.email = newEmail
 
@@ -35,7 +35,6 @@ contactList.append(Contact("Riyana", "780-857-1093", "ririyana7@gmail.com"))
 
 # Clear Console Function
 import os
-from typing_extensions import Concatenate
 def clear(): os.system('cls')
 
 # Main Menu Loop
@@ -56,7 +55,7 @@ def main():
         elif selection == "3":
             deleteContact()
         elif selection == "4":
-            searchContact()
+            searchContacts()
         elif selection == "5":
             showContact()
         elif selection == "6":
@@ -87,7 +86,7 @@ def getMenuSelection():
 
 # MENU FUNCTIONS:
 
-# Display contacts1
+# Display contacts
 def displayList():
 
     clear()
@@ -95,7 +94,7 @@ def displayList():
     for i in range(len(contactList)):
         print(str(i + 1) + ".", contactList[i].name)
 
-# Add new contact
+# Add New Contact
 def addNewContact():
 
     clear()
@@ -117,9 +116,17 @@ def deleteContact():
     # End deleteContact()
 
 # Search for Contact
-def searchContact():
-    pass
-    # End searchContact()5
+def searchContacts():
+    clear()
+    # Get input for contact name
+    inp = input("\nEnter contact name: ")
+    for i in range(len(contactList)):
+        if contactList[i].name == inp or inp in contactList[i].name == True:
+            print("\nResults: ")
+            print(contactList[i].name)
+        else: 
+             print("\nNo contacts were found")
+    # End searchContact()
 
 # Show Contact Information
 def showContact():
@@ -127,9 +134,10 @@ def showContact():
     # Display Contacts
     displayList()
     # Get User Input 
-    inp = int(input("Which contact do you wish to see? "))
+    inp = int(input("\nWhich contact do you wish to see? "))
     if inp <= len(contactList) and inp > 0:
         print(contactList[inp - 1])
+
     # End showContact()
 
 # Change Contact Information
@@ -138,19 +146,21 @@ def changeContact():
     # Ask which contact 
     displayList()
     contactNumber = int(input("\nWhich contact do you wish to change? ")) 
-    contactNumber = contactNumber - 1
 
-    if contactNumber <= len(contactList) and contactNumber > 0:
+    if contactNumber <= len(contactList) and contactNumber > 0:  
         # Get User Input 
         inp = input("\nDo you wish to change contact name, number or email? ")
 
         # Action based on input
         if inp == "Name" or inp == "name":
-            
+            Contact.setName(contactList[contactNumber- 1], input("Enter new name: "))
+            print("Done")
         elif inp == "Number" or inp == "number":
-            pass
+            Contact.setNumber(contactList[contactNumber- 1], input("Enter new number: "))
+            print("Done")
         elif inp == "Email" or inp == "email":
-            pass
+            Contact.setEmail(contactList[contactNumber- 1], input("Enter new email: "))
+            print("Done")
         else:
             print("\nInvalid input")
     
