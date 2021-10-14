@@ -35,6 +35,7 @@ contactList.append(Contact("Riyana", "780-857-1093", "ririyana7@gmail.com"))
 
 # Clear Console Function
 import os
+from typing_extensions import Concatenate
 def clear(): os.system('cls')
 
 # Main Menu Loop
@@ -107,8 +108,12 @@ def deleteContact():
     clear()
     displayList()
     contactNumber = int(input("Which contact # do you wish to delete? "))
-    contactList.pop(contactNumber - 1)
-    print("Done")
+
+    if contactNumber <= len(contactList) and contactNumber > 0:
+        contactList.pop(contactNumber - 1)
+        print("Done")
+    else:
+        print("Invalid input")
     # End deleteContact()
 
 # Search for Contact
@@ -129,7 +134,29 @@ def showContact():
 
 # Change Contact Information
 def changeContact():
-    pass
 
+    # Ask which contact 
+    displayList()
+    contactNumber = int(input("\nWhich contact do you wish to change? ")) 
+    contactNumber = contactNumber - 1
+
+    if contactNumber <= len(contactList) and contactNumber > 0:
+        # Get User Input 
+        inp = input("\nDo you wish to change contact name, number or email? ")
+
+        # Action based on input
+        if inp == "Name" or inp == "name":
+            
+        elif inp == "Number" or inp == "number":
+            pass
+        elif inp == "Email" or inp == "email":
+            pass
+        else:
+            print("\nInvalid input")
+    
+    else:
+        print("\nInvalid input")
+
+    
 # Call main() to start program
 main()
