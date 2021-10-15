@@ -32,6 +32,11 @@ contactList.append(Contact("Advi", "780-163-9527", "adviislam34@gmail.com"))
 contactList.append(Contact("Robert", "780-191-6799", "roberto9@gmail.com"))
 contactList.append(Contact("Kim", "780-232-2145", "kimberlyy04@yahoo.com"))
 contactList.append(Contact("Riyana", "780-857-1093", "ririyana7@gmail.com"))
+contactList.append(Contact("Darrell", "780-909-0022", "darellderrick0@yahoo.com"))
+contactList.append(Contact("Mohamed", "780-289-2034", "momoabdelrahman1@gmail.com"))
+contactList.append(Contact("William", "780-745-5954", "willywilliam90@gmail.com"))
+contactList.append(Contact("Jaehoon", "780-289-2418", "jaejit892@gmail.com"))
+contactList.append(Contact("Hubert", "780-366-0595", "hubertson68@hotmail.com"))
 
 # Clear Console Function
 import os
