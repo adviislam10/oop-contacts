@@ -98,6 +98,7 @@ def displayList():
     print("Contacts: ")
     for i in range(len(contactList)):
         print(str(i + 1) + ".", contactList[i].name)
+    # End displayList()
 
 # Add New Contact
 def addNewContact():
@@ -135,7 +136,7 @@ def searchContacts():
     # Display message if no contacts found
     if found == False:
         print("No Contacts were found")
-    # End searchContact()
+    # End searchContacs()
 
 # Show Contact Information
 def showContact():
@@ -146,7 +147,6 @@ def showContact():
     inp = int(input("\nWhich contact do you wish to see? "))
     if inp <= len(contactList) and inp > 0:
         print(contactList[inp - 1])
-
     # End showContact()
 
 # Change Contact Information
@@ -175,7 +175,7 @@ def changeContact():
     
     else:
         print("\nInvalid input")
-    # End displayList()
+    # End changeContact()
 
     
 # Call main() to start program
