@@ -118,14 +118,18 @@ def deleteContact():
 # Search for Contact
 def searchContacts():
     clear()
-    # Get input for contact name
+    found = False
+    # Get input for contact name and check
     inp = input("\nEnter contact name: ")
+    print("\nResults:")
     for i in range(len(contactList)):
-        if contactList[i].name == inp or inp in contactList[i].name == True:
-            print("\nResults: ")
+        if contactList[i].name == inp or inp in contactList[i].name:
+            found = True
             print(contactList[i].name)
-        else: 
-             print("\nNo contacts were found")
+    
+    # Display message if no contacts found
+    if found == False:
+        print("No Contacts were found")
     # End searchContact()
 
 # Show Contact Information
