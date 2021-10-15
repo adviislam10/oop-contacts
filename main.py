@@ -154,9 +154,9 @@ def changeContact():
 
     # Ask which contact 
     displayList()
-    contactNumber = int(input("\nWhich contact do you wish to change? ")) 
+    contactNumber = (input("\nWhich contact do you wish to change? ")) 
 
-    if contactNumber <= len(contactList) and contactNumber > 0:  
+    if int(contactNumber) <= len(contactList) and int(contactNumber) > 0:  
         # Get User Input 
         inp = input("\nDo you wish to change contact name, number or email? ")
 
@@ -175,6 +175,7 @@ def changeContact():
     
     else:
         print("\nInvalid input")
+    # End displayList()
 
     
 # Call main() to start program
