@@ -103,7 +103,7 @@ def displayList():
 def addNewContact():
 
     clear()
-    Contact(input("Enter name: "), input("Enter number: "), input("Enter email: "))
+    contactList.append(Contact(input("Enter name: "), input("Enter number: "), input("Enter email: ")))
     # End addNewContact()
 
 # Delete Contact
