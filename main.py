@@ -36,7 +36,7 @@ contactList.append(Contact("Darrell", "780-909-0022", "darellderrick0@yahoo.com"
 contactList.append(Contact("Mohamed", "780-289-2034", "momoabdelrahman1@gmail.com"))
 contactList.append(Contact("William", "780-745-5954", "willywilliam90@gmail.com"))
 contactList.append(Contact("Jaehoon", "780-289-2418", "jaejit892@gmail.com"))
-contactList.append(Contact("Hubert", "780-366-0595", "hubertson68@hotmail.com"))
+contactList.append(Contact("Julia", "780-366-0595", "heyjuliee00@gmail.com"))
 
 # Clear Console Function
 import os
