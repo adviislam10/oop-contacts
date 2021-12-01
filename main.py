@@ -125,7 +125,7 @@ def deleteContact():
 def searchContacts():
     clear()
     found = False
-    # Get input for contact name and check1
+    # Get input for contact name and check
     inp = input("\nEnter contact name: ")
     print("\nResults:")
     for i in range(len(contactList)):
