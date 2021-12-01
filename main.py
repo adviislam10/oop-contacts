@@ -125,11 +125,11 @@ def deleteContact():
 def searchContacts():
     clear()
     found = False
-    # Get input for contact name and check
+    # Get input for contact name and check1
     inp = input("\nEnter contact name: ")
     print("\nResults:")
     for i in range(len(contactList)):
-        if contactList[i].name == inp or inp in contactList[i].name:
+        if contactList[i].name == inp or inp in contactList[i].name.lower():
             found = True
             print(contactList[i].name)
     
