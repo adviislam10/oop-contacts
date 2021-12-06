@@ -1,6 +1,65 @@
 # Create Contacts List
 contactList = []
 
+# Clear Console Function
+import os
+def clear(): os.system('cls')
+
+# Check if inputs are valid
+
+def getValidStr(inp):
+    valid = True
+    while valid:
+        try:
+            int(inp)
+            inp = input("Invalid response, please enter a string: ")
+        except:
+            valid = False
+            return inp
+
+def getValidInt(inp):
+    valid = True
+    while valid: 
+        try: 
+            int(inp)
+            valid  = False
+            return int(inp)
+        except:
+            inp = input("Invalid reponse, please enter a number: ")
+
+# Login or Signup Menu
+from logindata import *
+
+def getLoginMenuSelection():
+    clear()
+    print("\nDo you wish to login or sign up?")
+    print("1: Login")
+    print("2: Signup")
+
+    inp = input("Enter option 1 or option 2: ")
+    inp = getValidInt(inp)
+
+    if inp == 1:
+        login()
+    
+    elif inp == 2:
+        signup()
+
+def login():
+    username = input("Enter your username: ")
+    username = getValidStr(username)
+    for i in range(len(users) - 1):
+        if username == users[i]:
+            pass
+
+def signup():
+    inp = input("Enter a new username: ")
+    inp = getValidStr(inp)
+    users.append(inp)
+    getLoginMenuSelection()
+    
+getLoginMenuSelection()
+
 # Contacts Class
 class Contact:
     # Initialize method
@@ -27,20 +86,16 @@ class Contact:
         self.email = newEmail
 
 # Create Initial Contacts
-contactList.append(Contact("Colin", "780-123-4567", "colinveldkamp6@gmail.com"))
-contactList.append(Contact("Advi", "780-163-9527", "adviislam34@gmail.com"))
-contactList.append(Contact("Robert", "780-191-6799", "roberto9@gmail.com"))
-contactList.append(Contact("Kim", "780-232-2145", "kimberlyy04@yahoo.com"))
-contactList.append(Contact("Riyana", "780-857-1093", "ririyana7@gmail.com"))
-contactList.append(Contact("Darrell", "780-909-0022", "darellderrick0@yahoo.com"))
-contactList.append(Contact("Mohamed", "780-289-2034", "momoabdelrahman1@gmail.com"))
-contactList.append(Contact("William", "780-745-5954", "willywilliam90@gmail.com"))
-contactList.append(Contact("Jaehoon", "780-289-2418", "jaejit892@gmail.com"))
-contactList.append(Contact("Julia", "780-366-0595", "heyjuliee00@gmail.com"))
-
-# Clear Console Function
-import os
-def clear(): os.system('cls')
+#contactList.append(Contact("Colin", "780-123-4567", "colinveldkamp6@gmail.com"))
+#contactList.append(Contact("Advi", "780-163-9527", "adviislam34@gmail.com"))
+#contactList.append(Contact("Robert", "780-191-6799", "roberto9@gmail.com"))
+#contactList.append(Contact("Kim", "780-232-2145", "kimberlyy04@yahoo.com"))
+#contactList.append(Contact("Riyana", "780-857-1093", "ririyana7@gmail.com"))
+#contactList.append(Contact("Darrell", "780-909-0022", "darellderrick0@yahoo.com"))
+#contactList.append(Contact("Mohamed", "780-289-2034", "momoabdelrahman1@gmail.com"))
+#contactList.append(Contact("William", "780-745-5954", "willywilliam90@gmail.com"))
+#contactList.append(Contact("Jaehoon", "780-289-2418", "jaejit892@gmail.com"))
+#contactList.append(Contact("Julia", "780-366-0595", "heyjuliee00@gmail.com"))
 
 # Main Menu Loop
 def main():
@@ -88,7 +143,6 @@ def getMenuSelection():
     return input("Enter a menu option: ")
     # End getMenuSelection()
 
-
 # MENU FUNCTIONS:
 
 # Display contacts
@@ -104,7 +158,7 @@ def displayList():
 def addNewContact():
 
     clear()
-    contactList.append(Contact(input("Enter name: "), input("Enter number: "), input("Enter email: ")))
+    contactList.append(Contact(input("Enter name: "), input("Enter phone number: "), input("Enter email: ")))
     # End addNewContact()
 
 # Delete Contact
@@ -112,7 +166,8 @@ def deleteContact():
 
     clear()
     displayList()
-    contactNumber = int(input("Which contact # do you wish to delete? "))
+    contactNumber = input("Which contact # do you wish to delete? ")
+    contactNumber = getValidInt(contactNumber)
 
     if contactNumber <= len(contactList) and contactNumber > 0:
         contactList.pop(contactNumber - 1)
@@ -127,7 +182,9 @@ def searchContacts():
     found = False
     # Get input for contact name and check
     inp = input("\nEnter contact name: ")
+    inp = getValidStr(inp)
     print("\nResults:")
+
     for i in range(len(contactList)):
         if contactList[i].name == inp or inp in contactList[i].name.lower():
             found = True
@@ -144,9 +201,13 @@ def showContact():
     # Display Contacts
     displayList()
     # Get User Input 
-    inp = int(input("\nWhich contact do you wish to see? "))
+    inp = int(input("\nWhich contact # do you wish to see? "))
+    inp = getValidInt(inp)
     if inp <= len(contactList) and inp > 0:
         print(contactList[inp - 1])
+    
+    else: 
+        print("Invalid Input")
     # End showContact()
 
 # Change Contact Information
@@ -154,18 +215,21 @@ def changeContact():
 
     # Ask which contact 
     displayList()
-    contactNumber = (input("\nWhich contact do you wish to change? ")) 
+
+    contactNumber = (input("\nWhich contact # do you wish to edit? "))
+    contactNumber = getValidInt(contactNumber)
 
     if int(contactNumber) <= len(contactList) and int(contactNumber) > 0:  
         # Get User Input 
-        inp = input("\nDo you wish to change contact name, number or email? ")
+        inp = input("\nDo you wish to change contact name, phone number or email? ")
+        inp = getValidStr(inp)
 
         # Action based on input
         if inp == "Name" or inp == "name":
             Contact.setName(contactList[contactNumber- 1], input("Enter new name: "))
             print("Done")
         elif inp == "Number" or inp == "number":
-            Contact.setNumber(contactList[contactNumber- 1], input("Enter new number: "))
+            Contact.setNumber(contactList[contactNumber- 1], input("Enter new phone number: "))
             print("Done")
         elif inp == "Email" or inp == "email":
             Contact.setEmail(contactList[contactNumber- 1], input("Enter new email: "))
@@ -174,9 +238,8 @@ def changeContact():
             print("\nInvalid input")
     
     else:
-        print("\nInvalid input")
+        print("\nCOntact does not exist")
     # End changeContact()
 
-    
 # Call main() to start program
 main()
