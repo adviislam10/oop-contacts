@@ -29,6 +29,7 @@ def getValidInt(inp):
 
 # Login or Signup Menu
 from logindata import *
+import json
 
 def getLoginMenuSelection():
     clear()
@@ -48,14 +49,40 @@ def getLoginMenuSelection():
 def login():
     username = input("Enter your username: ")
     username = getValidStr(username)
+
+    # Open json file
+    f = open('users.json')
+
+    # return json object as a dict and turn it into array
+    users = json.load(f)
+    users = dict.items(users)
+
     for i in range(len(users) - 1):
         if username == users[i]:
+            f.close()
             pass
+        else:
+            print("Username not registered")
+            getLoginMenuSelection
 
 def signup():
+    # Open json file
+    f = open('users.json', "r")
+    data = json.load(f) # read file data and convert JSON to dictionary
+    f.close()
+
+    # object to be appended
     inp = input("Enter a new username: ")
     inp = getValidStr(inp)
-    users.append(inp)
+    
+    # appending data
+    data["users"].append(inp)
+
+    # convert object into JSON string and write to file
+    f = open("users.json", "w")
+    json.dump(data, f) 
+    f.close()
+    
     getLoginMenuSelection()
     
 getLoginMenuSelection()
