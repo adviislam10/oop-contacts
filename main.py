@@ -28,7 +28,6 @@ def getValidInt(inp):
             inp = input("Invalid reponse, please enter a number: ")
 
 # Login or Signup Menu
-from logindata import *
 import json
 
 def getLoginMenuSelection():
@@ -87,6 +86,22 @@ def signup():
     
 getLoginMenuSelection()
 
+currentUser = "Advi"
+
+class User: 
+    # Initialize method
+    def __init__(self, username):
+
+        self.username = username
+        self.contacts = []
+
+    # Get as dict
+    def asDict(self):
+        temp = {
+            "username": self.username,
+            "contacts": []
+        }
+
 # Contacts Class
 class Contact:
     # Initialize method
@@ -95,6 +110,14 @@ class Contact:
         self.name = name
         self.number = number
         self.email = email
+
+    # Get as Dict
+    def asDict(self): 
+        return {
+            "name": self.name,
+            "number": self.number,
+            "email": self.email
+        }
 
     # Print Object Method
     def __str__(self):
@@ -113,16 +136,26 @@ class Contact:
         self.email = newEmail
 
 # Create Initial Contacts
-#contactList.append(Contact("Colin", "780-123-4567", "colinveldkamp6@gmail.com"))
-#contactList.append(Contact("Advi", "780-163-9527", "adviislam34@gmail.com"))
-#contactList.append(Contact("Robert", "780-191-6799", "roberto9@gmail.com"))
-#contactList.append(Contact("Kim", "780-232-2145", "kimberlyy04@yahoo.com"))
-#contactList.append(Contact("Riyana", "780-857-1093", "ririyana7@gmail.com"))
-#contactList.append(Contact("Darrell", "780-909-0022", "darellderrick0@yahoo.com"))
-#contactList.append(Contact("Mohamed", "780-289-2034", "momoabdelrahman1@gmail.com"))
-#contactList.append(Contact("William", "780-745-5954", "willywilliam90@gmail.com"))
-#contactList.append(Contact("Jaehoon", "780-289-2418", "jaejit892@gmail.com"))
-#contactList.append(Contact("Julia", "780-366-0595", "heyjuliee00@gmail.com"))
+contactList.append(Contact("Colin", "780-123-4567", "colinveldkamp6@gmail.com"))
+contactList.append(Contact("Advi", "780-163-9527", "adviislam34@gmail.com"))
+contactList.append(Contact("Robert", "780-191-6799", "roberto9@gmail.com"))
+contactList.append(Contact("Kim", "780-232-2145", "kimberlyy04@yahoo.com"))
+contactList.append(Contact("Riyana", "780-857-1093", "ririyana7@gmail.com"))
+contactList.append(Contact("Darrell", "780-909-0022", "darellderrick0@yahoo.com"))
+contactList.append(Contact("Mohamed", "780-289-2034", "momoabdelrahman1@gmail.com"))
+contactList.append(Contact("William", "780-745-5954", "willywilliam90@gmail.com"))
+contactList.append(Contact("Jaehoon", "780-289-2418", "jaejit892@gmail.com"))
+contactList.append(Contact("Julia", "780-366-0595", "heyjuliee00@gmail.com"))
+
+def getContactsAsDict(contacts):
+    for i in contacts: 
+        Contact.asDict(i)
+
+def save():
+    username = currentUser
+    User.asDict(username)
+
+
 
 # Main Menu Loop
 def main():
