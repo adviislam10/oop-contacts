@@ -51,15 +51,17 @@ def login():
 
     # Open json file
     f = open('users.json')
-
+    data = json.load(f) # read file data and convert JSON to dictionary
+    f.close()
+    
     # return json object as a dict and turn it into array
-    users = json.load(f)
-    users = dict.items(users)
+    users = data["users"].keys()
+    print(users)
 
     for i in range(len(users) - 1):
         if username == users[i]:
             f.close()
-            pass
+            return
         else:
             print("Username not registered")
             getLoginMenuSelection
@@ -88,12 +90,13 @@ getLoginMenuSelection()
 
 currentUser = "Advi"
 
+# User Class
 class User: 
     # Initialize method
-    def __init__(self, username):
+    def __init__(self, username, contacts):
 
         self.username = username
-        self.contacts = []
+        self.contacts = contacts
 
     # Get as dict
     def asDict(self):
@@ -102,7 +105,7 @@ class User:
             "contacts": []
         }
 
-# Contacts Class
+# Contact Class
 class Contact:
     # Initialize method
     def __init__(self, name, number, email):
@@ -145,17 +148,29 @@ contactList.append(Contact("Darrell", "780-909-0022", "darellderrick0@yahoo.com"
 contactList.append(Contact("Mohamed", "780-289-2034", "momoabdelrahman1@gmail.com"))
 contactList.append(Contact("William", "780-745-5954", "willywilliam90@gmail.com"))
 contactList.append(Contact("Jaehoon", "780-289-2418", "jaejit892@gmail.com"))
-contactList.append(Contact("Julia", "780-366-0595", "heyjuliee00@gmail.com"))
+contactList.append(Contact("Julie", "780-366-0595", "heyjuliee00@gmail.com"))
+
+def saveContacts(anArray, username):
+    f = open("users.json", "r")
+    data = json.load(f) # read file data and convert JSON to dictionary
+    f.close()
+
+    # Append data
+    for i in range(len(anArray) - 1):
+        data["users"][username].append(anArray[i].name)
+        data["users"][username].append(anArray[i].number)
+        data["users"][username].append(anArray[i].email)
+
+    # convert object into JSON string and write to file
+    f = open("users.json", "w")
+    json.dump(data, f) 
+    f.close()
+
+saveContacts(contactList, currentUser)
 
 def getContactsAsDict(contacts):
     for i in contacts: 
         Contact.asDict(i)
-
-def save():
-    username = currentUser
-    User.asDict(username)
-
-
 
 # Main Menu Loop
 def main():
@@ -302,4 +317,4 @@ def changeContact():
     # End changeContact()
 
 # Call main() to start program
-main()
+main
