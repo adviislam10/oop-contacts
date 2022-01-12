@@ -1,9 +1,1 @@
-{
-    "users":
-        {
-            "Advi": [],
-            "Colin": [],
-            "Rayden": []
-        }
-    
-}
+{"users": {"Advi": [{"name": "Colin", "number": "780-123-4567", "email": "colinveldkamp6@gmail.com"}, {"name": "Advi", "number": "780-163-9527", "email": "adviislam34@gmail.com"}, {"name": "Robert", "number": "780-191-6799", "email": "roberto9@gmail.com"}, {"name": "Kim", "number": "780-232-2145", "email": "kimberlyy04@yahoo.com"}, {"name": "Riyana", "number": "780-857-1093", "email": "ririyana7@gmail.com"}, {"name": "Darrell", "number": "780-909-0022", "email": "darellderrick0@yahoo.com"}, {"name": "Mohamed", "number": "780-289-2034", "email": "momoabdelrahman1@gmail.com"}, {"name": "William", "number": "780-745-5954", "email": "willywilliam90@gmail.com"}, {"name": "Jaehoon", "number": "780-289-2418", "email": "jaejit892@gmail.com"}, {"name": "Julie", "number": "780-366-0595", "email": "heyjuliee00@gmail.com"}], "Colin": [], "Rayden": []}}
