@@ -1,4 +1,4 @@
-# Create Contacts List
+# Create Users List
 users = []
 
 # Clear Console Function
