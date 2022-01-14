@@ -1,5 +1,6 @@
 # Create Users List
 users = []
+import sys
 
 # Clear Console Function
 import os
@@ -75,7 +76,7 @@ class User:
     # Delete Contact
     def deleteContact(self):
         clear()
-        User.displayList()
+        User.displayList(self)
         contactNumber = input("Which contact # do you wish to delete? ")
         contactNumber = getValidInt(contactNumber)
 
@@ -98,7 +99,7 @@ class User:
         for i in range(len(self.contactList)):
             if self.contactList[i].name == inp or inp in self.contactList[i].name.lower():
                 found = True
-                print(self.contactList[i].name)
+                print(str(i + 1) + ". " + self.contactList[i].name)
         
         # Display message if no contacts found
         if found == False:
@@ -109,7 +110,7 @@ class User:
     def showContact(self):
 
         # Display Contacts
-        User.displayList()
+        User.displayList(self)
         # Get User Input 
         inp = int(input("\nWhich contact # do you wish to see? "))
         inp = getValidInt(inp)
@@ -124,7 +125,7 @@ class User:
     def changeContact(self):
 
         # Ask which contact 
-        User.displayList()
+        User.displayList(self)
 
         contactNumber = (input("\nWhich contact # do you wish to edit? "))
         contactNumber = getValidInt(contactNumber)
@@ -195,13 +196,13 @@ def main():
         elif selection == "7":
             print("\nGoodbye")
             loop = False
+            sys.exit()
         else:
             print("\nInvalid menu selection")
         # End main while loop
     # End main()
     
 # Login and Signup
-
 def login():
     global currentUser
     username = input("Enter your username: ")
@@ -212,9 +213,10 @@ def login():
             currentUser = users[i - 1]
             main()
         
-        else:
-            print("Username not registered please select signup to register a new user")
-            getLoginMenuSelection()
+    else:
+        print("Username not registered please select signup to register a new user")
+        # Call Login Menu Selection
+        getLoginMenuSelection()
 
 def signup():
     # object to be appended
@@ -227,7 +229,6 @@ def signup():
     getLoginMenuSelection()
     
 # Create Initial Contacts
-
 users.append(User("Advi", [(Contact("Colin", "780-123-4567", "colinveldkamp6@gmail.com")),
 (Contact("Advi", "780-163-9527", "adviislam34@gmail.com")),
 (Contact("Robert", "780-191-6799", "roberto9@gmail.com")),
@@ -254,5 +255,6 @@ def getLoginMenuSelection():
     
     elif inp == 2:
         signup()
-    
+
+# Call Login Menu Selection
 getLoginMenuSelection()
