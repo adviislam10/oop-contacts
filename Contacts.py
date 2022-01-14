@@ -6,6 +6,7 @@ import sys
 import os
 def clear(): os.system('cls')
 
+# Input Validation Function
 def getValidStr(inp):
     valid = True
     while valid:
