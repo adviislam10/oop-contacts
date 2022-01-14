@@ -199,9 +199,7 @@ def main():
             sys.exit()
         else:
             print("\nInvalid menu selection")
-        # End main while loop
-    # End main()
-    
+   
 # Login and Signup
 def login():
     global currentUser
